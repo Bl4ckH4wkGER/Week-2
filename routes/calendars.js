@@ -31,7 +31,6 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-//put passes at this point
 router.put("/:id", async (req, res, next) => {
   const calendarId = req.params.id;
   const calendar = req.body;
@@ -43,7 +42,6 @@ router.put("/:id", async (req, res, next) => {
   }
 })
 
-//delete passes at this point
 router.delete("/:id", async (req, res, next) => {
   const calendarId = req.params.id;
     try {
