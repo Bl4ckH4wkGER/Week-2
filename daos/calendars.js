@@ -16,12 +16,8 @@ module.exports.getById = async (id) => {
 };
 
 module.exports.getAll = async () => {
-  try {
-    const calendar = await Calendars.find({})
-    return calendar;
-  } catch (e) {
-    return null;
-  }
+  const calendar = await Calendars.find({})
+  return calendar;
 }
 
 module.exports.updateById = async (calendarId, calendar) => {

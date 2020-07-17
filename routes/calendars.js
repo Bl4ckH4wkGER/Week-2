@@ -13,8 +13,8 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  const calendar = await CalendarDAO.getById(req.params.id);
+router.get("/:calendarId", async (req, res, next) => {
+  const calendar = await CalendarDAO.getById(req.params.calendarId);
   if (calendar) {
     res.json(calendar);
   } else {
@@ -31,8 +31,8 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
-  const calendarId = req.params.id;
+router.put("/:calendarId", async (req, res, next) => {
+  const calendarId = req.params.calendarId;
   const calendar = req.body;
   if (!calendar) {
     res.status(404).send('calendar is required"');
@@ -42,14 +42,14 @@ router.put("/:id", async (req, res, next) => {
   }
 })
 
-router.delete("/:id", async (req, res, next) => {
-  const calendarId = req.params.id;
-    try {
+router.delete("/:calendarId", async (req, res, next) => {
+  const calendarId = req.params.calendarId;
+  try {
       await CalendarDAO.deleteById(calendarId);
       res.sendStatus(200);
-    } catch(e) {
+  } catch(e) {
       res.status(500).send(e.message);
-    }
+  }
 })
 
 module.exports = router;
